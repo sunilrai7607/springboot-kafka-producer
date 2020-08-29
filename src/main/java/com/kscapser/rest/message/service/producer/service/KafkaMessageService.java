@@ -12,16 +12,13 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 @Slf4j
 public class KafkaMessageService {
 
-    private String topicPattern = "sample.message.%s.events";
     private final BinderAwareChannelResolver resolver;
-
     private final Producer producer;
+    private String topicPattern = "sample.message.%s.events";
 
     @Autowired
     public KafkaMessageService(BinderAwareChannelResolver resolver, Producer producer) {
@@ -50,9 +47,9 @@ public class KafkaMessageService {
     }
 
     private String buildPayload(ChatMessage channelName) {
-        try{
+        try {
             return new ObjectMapper().writeValueAsString(channelName);
-        }catch (JsonProcessingException e){
+        } catch (JsonProcessingException e) {
             log.error(e.getMessage());
             e.printStackTrace();
         }
