@@ -9,18 +9,15 @@ public class Producer {
     private Source mySource;
 
     public Producer(Source mySource) {
-
         super();
         this.mySource = mySource;
     }
 
     public Source getMySource() {
-
         return mySource;
     }
 
     public void setMySource(Source mysource) {
-
         mySource = mysource;
     }
 }
